@@ -18,6 +18,7 @@ void insert_tete(cellule** liste, int v){
         p->pre = p;
         *liste = p;
     } else {
+        
         // Insertion en tête dans une liste non vide
         cellule* dernier = (*liste)->pre; // Le dernier élément
         
@@ -84,42 +85,4 @@ void liberer_liste(cellule** liste){
     } while(courant != *liste);
     
     *liste = NULL;
-}
-
-int main(){
-    int v, i, n, choix;
-    cellule* liste = NULL;
-    
-    printf("Entrer le nombre d'elements : ");
-    scanf("%d", &n);
-    
-    for(i = 0; i < n; i++){
-        printf("\nElement %d : ", i+1);
-        scanf("%d", &v);
-        
-        printf("1. Insertion en tete\n");
-        printf("2. Insertion en queue\n");
-        printf("Votre choix : ");
-        scanf("%d", &choix);
-        
-        if(choix == 1){
-            insert_tete(&liste, v);
-        } else if(choix == 2){
-            insert_queue(&liste, v);
-        } else {
-            printf("Choix invalide, insertion en tete par defaut\n");
-            insert_tete(&liste, v);
-        }
-        
-        afficher_liste(liste);
-    }
-    
-    // Affichage final
-    printf("\nListe finale : ");
-    afficher_liste(liste);
-    
-    // Libération de la mémoire
-    liberer_liste(&liste);
-    
-    return 0;
 }
